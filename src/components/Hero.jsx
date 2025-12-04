@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
-import heroVisual from '../assets/hero_visual_v2.png';
+import heroVisual from '../assets/hero_visual_v3.png';
 
 const Hero = ({ scrollTo }) => {
     const [mounted, setMounted] = useState(false);
@@ -56,12 +56,12 @@ const Hero = ({ scrollTo }) => {
                     </div>
 
                     {/* Image/Visual Placeholder - Monochrome */}
-                    <div className="h-[40vh] lg:h-1/2 relative overflow-hidden border-t border-ash/20 group">
+                    <div className="h-[40vh] lg:h-1/2 relative overflow-hidden border-t border-ash/20 group rounded-3xl m-4 md:m-8">
                         <motion.img
                             style={{ y }}
                             src={heroVisual}
-                            alt="Elite Security"
-                            className="absolute inset-0 w-full h-[120%] object-cover grayscale opacity-40 group-hover:opacity-80 transition-opacity duration-700"
+                            alt="Undercover Security"
+                            className="absolute inset-0 w-full h-[120%] object-cover grayscale opacity-50 group-hover:opacity-70 transition-opacity duration-700"
                         />
                         <div className="absolute inset-0 bg-void/10 mix-blend-multiply" />
                     </div>
