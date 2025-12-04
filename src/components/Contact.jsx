@@ -20,18 +20,33 @@ const Contact = () => {
         e.preventDefault();
         setFormStatus({ loading: true, success: false, error: '' });
 
-        setTimeout(() => {
-            setFormStatus({ loading: false, success: true, error: '' });
-            setFormData({ name: '', email: '', service: '', message: '' });
-        }, 1500);
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    'form-name': 'contact',
+                    ...formData
+                }).toString()
+            });
+
+            if (response.ok) {
+                setFormStatus({ loading: false, success: true, error: '' });
+                setFormData({ name: '', email: '', service: '', message: '' });
+            } else {
+                setFormStatus({ loading: false, success: false, error: 'Something went wrong. Please try again.' });
+            }
+        } catch (error) {
+            setFormStatus({ loading: false, success: false, error: 'Something went wrong. Please try again.' });
+        }
     };
 
     return (
         <footer id="contact" className="bg-void border-t border-ash/20 pt-16 md:pt-24 pb-12">
             <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-                
+
                 <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 border-b border-ash/20 pb-16 md:pb-24">
-                    
+
                     {/* Left - Contact Info */}
                     <div className="lg:col-span-5 flex flex-col justify-between">
                         <div>
@@ -46,8 +61,8 @@ const Contact = () => {
 
                             {/* Location Visual */}
                             <div className="mb-12 h-48 w-full relative overflow-hidden border border-ash/20">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                                <img
+                                    src={contactVisual}
                                     alt="HQ Location"
                                     className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 opacity-50"
                                 />
@@ -84,91 +99,110 @@ const Contact = () => {
 
                     {/* Right - Form */}
                     <div className="lg:col-span-7">
-                        <form onSubmit={handleFormSubmit} className="space-y-0">
-                            <div className="grid md:grid-cols-2 border-t border-l border-r border-ash/20">
-                                <div className="border-b border-ash/20 p-0">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleFormChange}
-                                        className="w-full bg-transparent py-6 px-6 text-cream placeholder:text-stone/30 focus:bg-ash/5 focus:outline-none transition-colors"
-                                        placeholder="FULL NAME"
-                                        required
-                                    />
-                                </div>
-                                <div className="border-b border-ash/20 md:border-l border-ash/20 p-0">
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleFormChange}
-                                        className="w-full bg-transparent py-6 px-6 text-cream placeholder:text-stone/30 focus:bg-ash/5 focus:outline-none transition-colors"
-                                        placeholder="EMAIL ADDRESS"
-                                        required
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="border-l border-r border-b border-ash/20">
-                                <div className="relative">
-                                    <select
-                                        name="service"
-                                        value={formData.service}
-                                        onChange={handleFormChange}
-                                        className="w-full bg-transparent py-6 px-6 text-cream appearance-none focus:bg-ash/5 focus:outline-none transition-colors cursor-pointer"
-                                    >
-                                        <option value="" className="bg-void text-stone">WHAT DO YOU NEED HELP WITH?</option>
-                                        {services.map(s => (
-                                            <option key={s.title} value={s.title} className="bg-void text-cream">{s.title}</option>
-                                        ))}
-                                    </select>
-                                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-stone">
-                                        ↓
+                        <div className="bg-cream p-8 md:p-12 shadow-2xl">
+                            <form
+                                name="contact"
+                                method="POST"
+                                data-netlify="true"
+                                onSubmit={handleFormSubmit}
+                                className="space-y-0"
+                            >
+                                <input type="hidden" name="form-name" value="contact" />
+                                <div className="grid md:grid-cols-2 border-t border-l border-r border-ash/10">
+                                    <div className="border-b border-ash/10 p-0">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleFormChange}
+                                            className="w-full bg-transparent py-6 px-6 text-void placeholder:text-ash/40 focus:bg-ash/5 focus:outline-none transition-colors font-medium"
+                                            placeholder="FULL NAME"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="border-b border-ash/10 md:border-l border-ash/10 p-0">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleFormChange}
+                                            className="w-full bg-transparent py-6 px-6 text-void placeholder:text-ash/40 focus:bg-ash/5 focus:outline-none transition-colors font-medium"
+                                            placeholder="EMAIL ADDRESS"
+                                            required
+                                        />
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="border-l border-r border-b border-ash/20">
-                                <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleFormChange}
-                                    rows="4"
-                                    className="w-full bg-transparent py-6 px-6 text-cream placeholder:text-stone/30 focus:bg-ash/5 focus:outline-none resize-none transition-colors"
-                                    placeholder="TELL US MORE..."
-                                    required
-                                />
-                            </div>
+                                <div className="border-l border-r border-b border-ash/10">
+                                    <div className="relative">
+                                        <select
+                                            name="service"
+                                            value={formData.service}
+                                            onChange={handleFormChange}
+                                            className="w-full bg-transparent py-6 px-6 text-void appearance-none focus:bg-ash/5 focus:outline-none transition-colors cursor-pointer font-medium"
+                                        >
+                                            <option value="" className="bg-cream text-ash/40">WHAT DO YOU NEED HELP WITH?</option>
+                                            {services.map(s => (
+                                                <option key={s.title} value={s.title} className="bg-cream text-void">{s.title}</option>
+                                            ))}
+                                        </select>
+                                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-void">
+                                            ↓
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div className="pt-8">
-                                <button
-                                    type="submit"
-                                    disabled={formStatus.loading}
-                                    className="w-full py-6 bg-cream text-void font-display text-lg font-bold hover:bg-stone hover:text-cream transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3"
-                                >
-                                    {formStatus.loading ? (
-                                        <>SENDING... <Loader2 className="w-4 h-4 animate-spin" /></>
-                                    ) : (
-                                        <>SEND MESSAGE <ArrowRight className="w-4 h-4" /></>
-                                    )}
-                                </button>
-                            </div>
+                                <div className="border-l border-r border-b border-ash/10">
+                                    <textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleFormChange}
+                                        rows="4"
+                                        className="w-full bg-transparent py-6 px-6 text-void placeholder:text-ash/40 focus:bg-ash/5 focus:outline-none resize-none transition-colors font-medium"
+                                        placeholder="TELL US MORE..."
+                                        required
+                                    />
+                                </div>
 
-                            <AnimatePresence>
-                                {formStatus.success && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0 }}
-                                        className="flex items-center gap-2 text-cream mt-6 p-4 border border-ash/20 bg-ash/5"
+                                <div className="pt-8">
+                                    <button
+                                        type="submit"
+                                        disabled={formStatus.loading}
+                                        className="w-full py-6 bg-void text-cream font-display text-lg font-bold hover:bg-ash transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3"
                                     >
-                                        <CheckCircle2 className="w-5 h-5" />
-                                        <span className="text-sm font-mono uppercase tracking-wide">Message sent! We'll get back to you soon.</span>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </form>
+                                        {formStatus.loading ? (
+                                            <>SENDING... <Loader2 className="w-4 h-4 animate-spin" /></>
+                                        ) : (
+                                            <>SEND MESSAGE <ArrowRight className="w-4 h-4" /></>
+                                        )}
+                                    </button>
+                                </div>
+
+                                <AnimatePresence>
+                                    {formStatus.success && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0 }}
+                                            className="flex items-center gap-2 text-void mt-6 p-4 border border-ash/10 bg-ash/5"
+                                        >
+                                            <CheckCircle2 className="w-5 h-5" />
+                                            <span className="text-sm font-mono uppercase tracking-wide">Message sent! We'll get back to you soon.</span>
+                                        </motion.div>
+                                    )}
+                                    {formStatus.error && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0 }}
+                                            className="flex items-center gap-2 text-red-600 mt-6 p-4 border border-red-200 bg-red-50"
+                                        >
+                                            <span className="text-sm font-mono uppercase tracking-wide">{formStatus.error}</span>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </form>
+                        </div>
                     </div>
                 </div>
 

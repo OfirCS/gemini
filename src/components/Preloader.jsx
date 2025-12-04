@@ -35,11 +35,10 @@ const Preloader = ({ setLoading }) => {
   return (
     <motion.div
       className="fixed inset-0 z-[200] flex flex-col bg-void overflow-hidden"
-      initial={{ opacity: 1 }}
+      initial={{ y: 0 }}
       exit={{
-        opacity: 0,
-        pointerEvents: "none",
-        transition: { duration: 1.0, ease: "easeInOut" }
+        y: "-100%",
+        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
       }}
     >
       {/* Main content container */}
@@ -52,7 +51,7 @@ const Preloader = ({ setLoading }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <Logo className="h-12 w-auto" />
+            <Logo className="h-20 w-auto" />
           </motion.div>
         </div>
 
@@ -93,6 +92,14 @@ const Preloader = ({ setLoading }) => {
                 transition={{ ease: "linear" }}
               />
             </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="text-stone font-mono text-xs uppercase tracking-widest hidden md:block"
+          >
+            System Initializing...
           </motion.div>
         </div>
       </div>

@@ -12,9 +12,17 @@ import Protocol from './components/Protocol';
 import Contact from './components/Contact';
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    return !sessionStorage.getItem('hasLoaded');
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (loading) {
+      sessionStorage.setItem('hasLoaded', 'true');
+    }
+  }, [loading]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);

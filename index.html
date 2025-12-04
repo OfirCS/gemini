@@ -17,24 +17,24 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://emerge-security.com/" />
+  <meta property="og:url" content="https://emergegta.com/" />
   <meta property="og:title" content="EMERGE | Strategic Security" />
   <meta property="og:description"
     content="Tier-1 personal security solutions with 15+ years of operational experience. Superior protection through intelligence and force." />
-  <meta property="og:image" content="https://emerge-security.com/og-image.jpg" />
+  <meta property="og:image" content="https://emergegta.com/og-image.png" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://emerge-security.com/" />
+  <meta property="twitter:url" content="https://emergegta.com/" />
   <meta property="twitter:title" content="EMERGE | Strategic Security" />
   <meta property="twitter:description" content="Tier-1 personal security solutions. 24/7 response, 100% discretion." />
-  <meta property="twitter:image" content="https://emerge-security.com/og-image.jpg" />
+  <meta property="twitter:image" content="https://emergegta.com/og-image.png" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png" />
 
   <!-- Canonical Tag -->
-  <link rel="canonical" href="https://emerge-security.com/" />
+  <link rel="canonical" href="https://emergegta.com/" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -42,9 +42,9 @@
         "@context": "https://schema.org",
         "@type": "SecurityService",
         "name": "Emerge Security",
-        "image": "https://emerge-security.com/og-image.jpg",
+        "image": "https://emergegta.com/og-image.png",
         "description": "Tier-1 personal security solutions. Strategic threat assessment, close protection, residential fortification, and corporate risk management.",
-        "url": "https://emerge-security.com/",
+        "url": "https://emergegta.com/",
         "telephone": "+1-555-0123-4567",
         "address": {
           "@type": "PostalAddress",
@@ -77,6 +77,14 @@
 </head>
 
 <body>
+  <!-- Hidden form for Netlify Forms detection -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="text" name="service" />
+    <textarea name="message"></textarea>
+  </form>
+
   <div id="root"></div>
   <script type="module" src="/main.jsx"></script>
 </body>
