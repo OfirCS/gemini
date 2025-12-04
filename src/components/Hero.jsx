@@ -58,8 +58,8 @@ const Hero = ({ scrollTo }) => {
                     <div className="h-[40vh] lg:h-1/2 relative overflow-hidden border-t border-ash/20 group">
                         <motion.img 
                             style={{ y }}
-                            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-                            alt="Architecture"
+                            src="https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=2069&auto=format&fit=crop"
+                            alt="Executive Protection"
                             className="absolute inset-0 w-full h-[120%] object-cover grayscale opacity-60 group-hover:opacity-80 transition-opacity duration-700"
                         />
                         <div className="absolute inset-0 bg-void/10 mix-blend-multiply" />

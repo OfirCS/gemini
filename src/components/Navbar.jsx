@@ -98,15 +98,15 @@ const Navbar = ({ scrolled, isMenuOpen, toggleMenu, scrollTo }) => {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-void z-40 flex flex-col pt-32 px-6 md:px-12"
           >
-            <div className="flex-1 flex flex-col items-start gap-0 border-t border-ash/20">
+            <div className="flex-1 flex flex-col items-center justify-center gap-8">
               {[...navItems, { name: 'Contact', id: 'contact' }].map((item, i) => (
                 <motion.button
                   key={item.name}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => scrollTo(item.id)}
-                  className="w-full text-left py-6 border-b border-ash/20 font-display text-4xl md:text-6xl text-stone hover:text-cream hover:pl-4 transition-all duration-300"
+                  className="w-full text-center font-display text-5xl text-stone hover:text-cream transition-all duration-300"
                 >
                   {item.name}
                 </motion.button>
