@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Mail, MapPin, Phone, Loader2, CheckCircle2 } from 'lucide-react';
 import { services } from '../data';
+import contactVisual from '../assets/contact_visual.png';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
