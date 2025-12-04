@@ -100,7 +100,7 @@ const Contact = () => {
 
                     {/* Right - Form */}
                     <div className="lg:col-span-7">
-                        <div className="bg-cream p-8 md:p-12 shadow-2xl">
+                        <div className="bg-cream p-6 md:p-12 shadow-2xl">
                             <form
                                 name="contact"
                                 method="POST"
