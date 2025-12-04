@@ -37,7 +37,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="bg-void text-cream min-h-screen font-sans selection:bg-brass/30 selection:text-cream">
+    <div className="bg-void text-cream min-h-screen font-sans selection:bg-cream selection:text-void">
 
       <AnimatePresence mode='wait'>
         {loading && <Preloader key="preloader" setLoading={setLoading} />}

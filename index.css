@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,20 +14,20 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-normal tracking-tight;
+    @apply font-display tracking-tight;
   }
 
-  /* Scrollbar - Mechanical/Dark */
+  /* Minimalist Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-obsidian;
+    @apply bg-void;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-ash rounded-full;
+    @apply bg-ash;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -35,31 +35,17 @@
   }
 
   ::selection {
-    @apply bg-brass/30 text-cream;
+    @apply bg-cream text-void;
   }
 }
 
 /* Utility classes */
 @layer utilities {
-  .tactical-border {
-    @apply relative border border-ash/20;
-  }
-
-  .tactical-border::before, .tactical-border::after {
-    content: '';
-    @apply absolute w-2 h-2 border-cream/40 border-solid transition-all duration-300;
-  }
-
-  .tactical-border::before {
-    @apply -top-px -left-px border-t-2 border-l-2;
-  }
-
-  .tactical-border::after {
-    @apply -bottom-px -right-px border-b-2 border-r-2;
-  }
-
-  .tactical-border:hover::before, .tactical-border:hover::after {
-    @apply w-full h-full border-brass;
+  .grid-bg {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   }
 }
 

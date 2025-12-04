@@ -7,23 +7,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        void: '#0a0908',
-        obsidian: '#141311',
-        graphite: '#1c1b18',
-        ash: '#2a2824',
-        smoke: '#4a463d',
-        stone: '#7a7468',
-        cream: '#f4f1eb',
-        ivory: '#faf8f5',
-        brass: '#b5a17c',
-        'brass-muted': '#9c8e6e',
-        ember: '#c45a3b',
-        midnight: '#0a0908',
-        gold: '#b5a17c',
+        // STRICT MONOCHROME PALETTE MAPPED TO EXISTING NAMES
+        void: '#050505',       // Deep Black
+        cream: '#ffffff',      // Pure White
+        
+        // Grays scale mapped to existing names to maintain code structure but change visual
+        obsidian: '#111111',   // Dark Gray
+        graphite: '#222222',
+        ash: '#333333',        // Borders/Lines
+        smoke: '#666666',      // Muted Text
+        stone: '#999999',      // Secondary Text
+        
+        // Map "Brass/Gold" accents to White to enforce monochrome high-contrast
+        brass: '#ffffff',      
+        'brass-muted': '#cccccc',
+        gold: '#ffffff',
+        ember: '#ffffff',
+        
+        ivory: '#fafafa',
+        midnight: '#000000',
       },
       fontFamily: {
-        sans: ['DM Sans', 'system-ui', 'sans-serif'],
-        display: ['Instrument Serif', 'Georgia', 'serif'],
+        // Architectural / Swiss Style
+        sans: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Manrope', 'Inter', 'sans-serif'], // Unified font family for brutalist look
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
         'fade-up': 'fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
