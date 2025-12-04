@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-void text-cream font-sans antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-normal tracking-tight;
+  }
+
+  /* Scrollbar - Mechanical/Dark */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-obsidian;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ash rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-stone;
+  }
+
+  ::selection {
+    @apply bg-brass/30 text-cream;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .tactical-border {
+    @apply relative border border-ash/20;
+  }
+
+  .tactical-border::before, .tactical-border::after {
+    content: '';
+    @apply absolute w-2 h-2 border-cream/40 border-solid transition-all duration-300;
+  }
+
+  .tactical-border::before {
+    @apply -top-px -left-px border-t-2 border-l-2;
+  }
+
+  .tactical-border::after {
+    @apply -bottom-px -right-px border-b-2 border-r-2;
+  }
+
+  .tactical-border:hover::before, .tactical-border:hover::after {
+    @apply w-full h-full border-brass;
+  }
+}
+
+/* Smooth scroll adjustments */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
