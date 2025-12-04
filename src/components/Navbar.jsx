@@ -106,7 +106,7 @@ const Navbar = ({ scrolled, isMenuOpen, toggleMenu, scrollTo }) => {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => scrollTo(item.id)}
-                  className="w-full text-center font-display text-5xl text-stone hover:text-cream transition-all duration-300"
+                  className="w-full text-center font-display text-3xl md:text-4xl uppercase tracking-[0.2em] text-cream/90 hover:text-cream transition-all duration-300"
                 >
                   {item.name}
                 </motion.button>

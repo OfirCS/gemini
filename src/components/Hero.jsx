@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import heroVisual from '../assets/hero_visual_v2.png';
 
 const Hero = ({ scrollTo }) => {
     const [mounted, setMounted] = useState(false);
     const { scrollY } = useScroll();
     const y = useTransform(scrollY, [0, 1000], [0, 400]);
-    
+
     useEffect(() => {
         setMounted(true);
     }, []);
 
     return (
         <header className="relative min-h-screen flex flex-col pt-32 bg-void overflow-hidden border-b border-ash/20">
-            
+
             {/* Main Content Grid */}
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 h-full">
-                
+
                 {/* Left Column - Typography */}
                 <div className="lg:col-span-8 px-6 md:px-12 lg:px-16 flex flex-col justify-center border-r border-ash/20">
                     <motion.div
@@ -31,13 +32,13 @@ const Hero = ({ scrollTo }) => {
                         </h1>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5, duration: 1 }}
                         className="mt-12 max-w-xl"
                     >
-                         <p className="text-lg md:text-xl text-stone font-medium leading-relaxed">
+                        <p className="text-lg md:text-xl text-stone font-medium leading-relaxed">
                             Professional security for business leaders, families, and anyone who needs real protection. We keep you safe so you can focus on what matters.
                         </p>
                     </motion.div>
@@ -53,14 +54,14 @@ const Hero = ({ scrollTo }) => {
                             INITIATE CONTACT
                         </button>
                     </div>
-                    
+
                     {/* Image/Visual Placeholder - Monochrome */}
                     <div className="h-[40vh] lg:h-1/2 relative overflow-hidden border-t border-ash/20 group">
-                        <motion.img 
+                        <motion.img
                             style={{ y }}
-                            src="https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=2069&auto=format&fit=crop"
-                            alt="Executive Protection"
-                            className="absolute inset-0 w-full h-[120%] object-cover grayscale opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+                            src={heroVisual}
+                            alt="Elite Security"
+                            className="absolute inset-0 w-full h-[120%] object-cover grayscale opacity-40 group-hover:opacity-80 transition-opacity duration-700"
                         />
                         <div className="absolute inset-0 bg-void/10 mix-blend-multiply" />
                     </div>
