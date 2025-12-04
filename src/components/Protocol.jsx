@@ -6,21 +6,21 @@ const Protocol = () => {
     const steps = [
         {
             num: "01",
-            title: "Assess",
-            desc: "Comprehensive threat assessment. We evaluate your profile, identify vulnerabilities, and analyze potential risks to you and your family.",
-            detail: "Analysis"
+            title: "We Listen",
+            desc: "First, we talk. We learn about your daily routine, your concerns, and what matters most to you. No two clients are the same.",
+            detail: "Understand"
         },
         {
             num: "02",
-            title: "Plan",
-            desc: "Custom security architecture. We design protection protocols tailored to your lifestyle, travel patterns, and specific requirements.",
+            title: "We Plan",
+            desc: "Based on what we learn, we create a security plan that works for your life. Simple, practical, effective.",
             detail: "Design"
         },
         {
             num: "03",
-            title: "Execute",
-            desc: "Professional deployment. Our operators integrate seamlessly, providing discrete protection without disrupting your daily life.",
-            detail: "Action"
+            title: "We Protect",
+            desc: "Our team steps in quietly. You go about your life normally while we handle your safety in the background.",
+            detail: "Deliver"
         },
     ];
 
@@ -31,7 +31,7 @@ const Protocol = () => {
                 {steps.map((step, i) => (
                     <div 
                         key={i}
-                        className={`group relative p-8 md:p-12 lg:p-16 border-b md:border-b-0 border-ash/20 ${i !== 2 ? 'md:border-r' : ''} hover:bg-ash/5 transition-colors duration-500 min-h-[500px] flex flex-col justify-between`}
+                        className={`group relative p-8 md:p-12 lg:p-16 border-b md:border-b-0 border-ash/20 ${i !== 2 ? 'md:border-r' : ''} hover:bg-ash/5 transition-colors duration-500 min-h-[400px] md:min-h-[500px] flex flex-col justify-between`}
                     >
                         <div className="flex justify-between items-start">
                             <span className="font-display text-5xl text-ash/20 font-bold group-hover:text-ash/40 transition-colors duration-500">
@@ -60,7 +60,7 @@ const Protocol = () => {
             {/* Bottom CTA Bar */}
             <div className="bg-cream text-void p-12 md:p-16 text-center">
                 <h2 className="font-display text-4xl md:text-6xl uppercase tracking-tight mb-8">
-                    Secure Your Future
+                    Ready To Talk?
                 </h2>
                 <button
                     onClick={() => {
@@ -69,7 +69,7 @@ const Protocol = () => {
                     }}
                     className="inline-flex items-center gap-4 px-8 py-4 border border-void/20 hover:bg-void hover:text-cream transition-all duration-300 rounded-sm uppercase font-bold text-sm tracking-widest"
                 >
-                    Start Assessment <ArrowRight className="w-4 h-4" />
+                    Free Consultation <ArrowRight className="w-4 h-4" />
                 </button>
             </div>
         </section>

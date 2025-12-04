@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 const Experience = () => {
     const stats = [
-        { value: '10+', label: 'Years Active' },
-        { value: '100%', label: 'Client Retention' },
-        { value: '24/7', label: 'Global Ops' },
+        { value: '10+', label: 'Years Experience' },
+        { value: '100%', label: 'Clients Stay With Us' },
+        { value: '24/7', label: 'Always Available' },
     ];
 
     return (
@@ -15,16 +15,15 @@ const Experience = () => {
                 {/* Left Block - Manifesto */}
                 <div className="p-8 md:p-16 lg:p-24 border-b lg:border-b-0 lg:border-r border-void flex flex-col justify-center">
                     <span className="text-xs uppercase tracking-widest mb-12 block">
-                        Operational History
+                        Who We Are
                     </span>
                     <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold uppercase leading-[0.9] tracking-tight mb-12">
-                        Proven
+                        Real World
                         <br />
-                        In The Field
+                        Experience
                     </h2>
                     <p className="font-sans text-lg md:text-xl font-medium leading-relaxed max-w-md">
-                        Our operators are drawn from the world's most elite military and law enforcement units. 
-                        Discipline, discretion, and decisive action are the cornerstones of our philosophy.
+                        Our team comes from military and police special units. We know how to handle tough situations calmly and professionally, keeping you safe without getting in your way.
                     </p>
                 </div>
 

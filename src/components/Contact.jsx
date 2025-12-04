@@ -27,22 +27,37 @@ const Contact = () => {
     };
 
     return (
-        <footer id="contact" className="bg-void border-t border-ash/20 pt-24 pb-12">
+        <footer id="contact" className="bg-void border-t border-ash/20 pt-16 md:pt-24 pb-12">
             <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
                 
-                <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 border-b border-ash/20 pb-24">
+                <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 border-b border-ash/20 pb-16 md:pb-24">
                     
                     {/* Left - Contact Info */}
                     <div className="lg:col-span-5 flex flex-col justify-between">
                         <div>
                             <h2 className="font-display text-5xl md:text-6xl text-cream uppercase leading-none tracking-tight mb-8">
-                                Initiate
+                                Let's
                                 <br />
-                                Dialogue
+                                Talk
                             </h2>
-                            <p className="text-stone text-lg font-medium leading-relaxed max-w-md mb-16">
-                                Secure communication channels are active. We operate with absolute discretion for all inquiries.
+                            <p className="text-stone text-lg font-medium leading-relaxed max-w-md mb-12">
+                                Have questions? Need a quote? Just want to chat about your security needs? We're here to help. All conversations are confidential.
                             </p>
+
+                            {/* Location Visual */}
+                            <div className="mb-12 h-48 w-full relative overflow-hidden border border-ash/20">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                                    alt="HQ Location"
+                                    className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 opacity-50"
+                                />
+                                <div className="absolute inset-0 bg-void/40" />
+                                <div className="absolute bottom-4 left-4">
+                                    <span className="text-xs text-cream uppercase tracking-widest bg-void/80 px-2 py-1">
+                                        Global HQ - Toronto
+                                    </span>
+                                </div>
+                            </div>
 
                             <div className="space-y-8">
                                 <div className="flex items-start gap-6 group">
@@ -59,7 +74,7 @@ const Contact = () => {
                                         <Phone className="w-4 h-4 text-stone group-hover:text-void" />
                                     </div>
                                     <div>
-                                        <span className="block text-xs uppercase tracking-widest text-stone mb-1">Secure Line</span>
+                                        <span className="block text-xs uppercase tracking-widest text-stone mb-1">Call Us</span>
                                         <span className="text-lg text-cream font-display tracking-wide">+1 (555) 123-4567</span>
                                     </div>
                                 </div>
@@ -103,7 +118,7 @@ const Contact = () => {
                                         onChange={handleFormChange}
                                         className="w-full bg-transparent py-6 px-6 text-cream appearance-none focus:bg-ash/5 focus:outline-none transition-colors cursor-pointer"
                                     >
-                                        <option value="" className="bg-void text-stone">SELECT SERVICE REQUIREMENT</option>
+                                        <option value="" className="bg-void text-stone">WHAT DO YOU NEED HELP WITH?</option>
                                         {services.map(s => (
                                             <option key={s.title} value={s.title} className="bg-void text-cream">{s.title}</option>
                                         ))}
@@ -121,7 +136,7 @@ const Contact = () => {
                                     onChange={handleFormChange}
                                     rows="4"
                                     className="w-full bg-transparent py-6 px-6 text-cream placeholder:text-stone/30 focus:bg-ash/5 focus:outline-none resize-none transition-colors"
-                                    placeholder="OPERATIONAL DETAILS..."
+                                    placeholder="TELL US MORE..."
                                     required
                                 />
                             </div>
@@ -133,9 +148,9 @@ const Contact = () => {
                                     className="w-full py-6 bg-cream text-void font-display text-lg font-bold hover:bg-stone hover:text-cream transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3"
                                 >
                                     {formStatus.loading ? (
-                                        <>PROCESSING <Loader2 className="w-4 h-4 animate-spin" /></>
+                                        <>SENDING... <Loader2 className="w-4 h-4 animate-spin" /></>
                                     ) : (
-                                        <>TRANSMIT REQUEST <ArrowRight className="w-4 h-4" /></>
+                                        <>SEND MESSAGE <ArrowRight className="w-4 h-4" /></>
                                     )}
                                 </button>
                             </div>
@@ -149,7 +164,7 @@ const Contact = () => {
                                         className="flex items-center gap-2 text-cream mt-6 p-4 border border-ash/20 bg-ash/5"
                                     >
                                         <CheckCircle2 className="w-5 h-5" />
-                                        <span className="text-sm font-mono uppercase tracking-wide">Transmission Successful. Awaiting Response.</span>
+                                        <span className="text-sm font-mono uppercase tracking-wide">Message sent! We'll get back to you soon.</span>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -162,11 +177,13 @@ const Contact = () => {
                         © 2025 Emerge Security Systems
                     </span>
                     <div className="flex gap-8">
-                        <a href="#" className="text-xs font-mono text-stone hover:text-cream uppercase tracking-widest transition-colors">Privacy Protocol</a>
-                        <a href="#" className="text-xs font-mono text-stone hover:text-cream uppercase tracking-widest transition-colors">Terms of Engagement</a>
+                        <a href="#" className="text-xs font-mono text-stone hover:text-cream uppercase tracking-widest transition-colors">Privacy Policy</a>
+                        <a href="#" className="text-xs font-mono text-stone hover:text-cream uppercase tracking-widest transition-colors">Terms of Service</a>
                     </div>
                 </div>
             </div>
         </footer>
     );
 };
+
+export default Contact;

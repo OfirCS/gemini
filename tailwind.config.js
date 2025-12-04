@@ -28,9 +28,9 @@ export default {
         midnight: '#000000',
       },
       fontFamily: {
-        // Clean Swiss Style
+        // Modern / Space Aesthetic
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'], // Creative, modern display font
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       animation: {
@@ -38,6 +38,7 @@ export default {
         'fade-in': 'fadeIn 1s ease forwards',
         'slide-in': 'slideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
         'expand': 'expand 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       transitionTimingFunction: {
         'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',

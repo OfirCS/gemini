@@ -24,10 +24,10 @@ const Hero = ({ scrollTo }) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] font-bold leading-[0.85] tracking-tighter text-cream -ml-1">
-                            PRECISION
+                        <h1 className="font-display text-5xl md:text-9xl lg:text-[10rem] font-bold leading-[0.9] md:leading-[0.85] tracking-tighter text-cream -ml-1">
+                            YOUR SAFETY
                             <br />
-                            <span className="text-stone">PROTECTION</span>
+                            <span className="text-stone">OUR MISSION</span>
                         </h1>
                     </motion.div>
 
@@ -38,7 +38,7 @@ const Hero = ({ scrollTo }) => {
                         className="mt-12 max-w-xl"
                     >
                          <p className="text-lg md:text-xl text-stone font-medium leading-relaxed">
-                            We provide elite security services for executives, high net-worth individuals, and sensitive assets worldwide. 
+                            Professional security for business leaders, families, and anyone who needs real protection. We keep you safe so you can focus on what matters.
                         </p>
                     </motion.div>
                 </div>
@@ -58,11 +58,11 @@ const Hero = ({ scrollTo }) => {
                     <div className="h-[40vh] lg:h-1/2 relative overflow-hidden border-t border-ash/20 group">
                         <motion.img 
                             style={{ y }}
-                            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
                             alt="Architecture"
-                            className="absolute inset-0 w-full h-[120%] object-cover grayscale opacity-40 group-hover:opacity-60 transition-opacity duration-700"
+                            className="absolute inset-0 w-full h-[120%] object-cover grayscale opacity-60 group-hover:opacity-80 transition-opacity duration-700"
                         />
-                        <div className="absolute inset-0 bg-void/20" />
+                        <div className="absolute inset-0 bg-void/10 mix-blend-multiply" />
                     </div>
                 </div>
             </div>

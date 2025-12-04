@@ -8,23 +8,23 @@ import diplomaticImg from '../assets/diplomatic.png';
 
 export const services = [
     {
-        title: "CLOSE PROTECTION",
-        description: "Professional security personnel with military and law enforcement backgrounds. Discrete coverage for principals and their families.",
+        title: "PERSONAL PROTECTION",
+        description: "Trained bodyguards who blend in while keeping you and your family safe. We're there when you need us, invisible when you don't.",
         image: residentialImg
     },
     {
-        title: "SECURE ESCORT",
-        description: "Protective escort and secure transportation. Route planning, advance work, and real-time situational awareness.",
+        title: "SECURE TRANSPORT",
+        description: "Safe travel from A to B. We plan routes, check locations ahead of time, and handle any situation on the road.",
         image: executiveImg
     },
     {
-        title: "THREAT ASSESSMENT",
-        description: "Comprehensive risk analysis and intelligence gathering. Identify vulnerabilities and develop mitigation strategies.",
+        title: "RISK ASSESSMENT",
+        description: "We look at your daily life and find the weak spots before problems happen. Then we fix them.",
         image: intelligenceImg
     },
     {
-        title: "SECURITY CONSULTING",
-        description: "Security audits, protocol development, and training. Technical solutions for residential and corporate environments.",
+        title: "SECURITY ADVICE",
+        description: "Expert guidance on making your home or office safer. From alarm systems to staff training, we cover it all.",
         image: diplomaticImg
     }
 ];
@@ -32,30 +32,30 @@ export const services = [
 export const sectors = [
     {
         icon: Briefcase,
-        title: "CORPORATE",
+        title: "BUSINESSES",
         target: "Executive Protection",
-        desc: "Executive protection, secure facilities assessment, and corporate security consulting.",
+        desc: "Keep your executives safe and your offices secure. We work with companies of all sizes.",
         image: executiveImg
     },
     {
         icon: Home,
-        title: "HIGH NET-WORTH INDIVIDUALS",
+        title: "FAMILIES",
         target: "Personal Security",
-        desc: "Personal and family protection. Residential security assessments, travel planning, and close protection services.",
+        desc: "Protection for you and your loved ones. At home, traveling, or anywhere life takes you.",
         image: residentialImg
     },
     {
         icon: Shield,
         title: "PUBLIC FIGURES",
         target: "Profile Protection",
-        desc: "Security services for politicians, executives, and public personalities requiring discrete protection.",
+        desc: "Quiet, professional security for people in the spotlight. We protect without drawing attention.",
         image: diplomaticImg
     },
     {
         icon: Activity,
-        title: "EVENT SECURITY",
+        title: "EVENTS",
         target: "Special Events",
-        desc: "Security planning and management for private events, corporate functions, and high-profile gatherings.",
+        desc: "From private parties to corporate gatherings, we make sure everything runs smoothly and safely.",
         image: tacticalImg
     }
 ];

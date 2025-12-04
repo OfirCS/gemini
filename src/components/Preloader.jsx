@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 
 const Preloader = ({ setLoading }) => {
   const [count, setCount] = useState(0);
@@ -46,14 +47,13 @@ const Preloader = ({ setLoading }) => {
 
         {/* Top bar */}
         <div className="flex justify-between items-center px-8 md:px-16 py-8">
-          <motion.span
-            className="font-display text-xl md:text-2xl text-cream tracking-widest uppercase"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Emerge
-          </motion.span>
+            <Logo className="h-12 w-auto" />
+          </motion.div>
         </div>
 
         {/* Center content */}

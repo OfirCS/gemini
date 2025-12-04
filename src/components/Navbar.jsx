@@ -27,8 +27,7 @@ const Navbar = ({ scrolled, isMenuOpen, toggleMenu, scrollTo }) => {
             href="#"
             className="flex items-center gap-4 group"
             >
-            <Logo className="w-8 h-8" />
-            <span className="font-display text-lg font-bold tracking-tight text-cream group-hover:text-stone transition-colors">EMERGE</span>
+            <Logo className="h-12 w-auto" />
             </a>
 
             {/* Desktop Menu - Minimalist */}
@@ -91,7 +90,7 @@ const Navbar = ({ scrolled, isMenuOpen, toggleMenu, scrollTo }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-void z-40 flex flex-col pt-24 px-6"
+            className="fixed inset-0 bg-void z-40 flex flex-col pt-32 px-6 md:px-12"
           >
             <div className="flex-1 flex flex-col items-start gap-0 border-t border-ash/20">
               {[...navItems, { name: 'Contact', id: 'contact' }].map((item, i) => (
@@ -99,9 +98,9 @@ const Navbar = ({ scrolled, isMenuOpen, toggleMenu, scrollTo }) => {
                     key={item.name}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: i * 0.05, duration: 0.5 }}
+                    transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     onClick={() => scrollTo(item.id)}
-                    className="w-full text-left py-6 border-b border-ash/20 font-display text-4xl md:text-5xl text-stone hover:text-cream hover:pl-4 transition-all duration-300"
+                    className="w-full text-left py-6 border-b border-ash/20 font-display text-5xl md:text-6xl text-stone hover:text-cream hover:pl-4 transition-all duration-300"
                 >
                     {item.name}
                 </motion.button>

@@ -11,11 +11,8 @@ const Logo = ({ className = "" }) => {
             <img 
                 src={logoImg} 
                 alt="Emerge Security" 
-                className="h-10 w-auto object-contain brightness-0 invert"
+                className="h-full w-auto object-contain brightness-0 invert"
             />
-            {/* The text "EMERGE" is now assumed to be part of the logo image for simplicity,
-                or will be added directly in Navbar.jsx if the image is purely an icon.
-                For now, remove the separate text span here to simplify. */}
         </div>
     );
 };
