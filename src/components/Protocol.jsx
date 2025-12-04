@@ -77,6 +77,3 @@ const Protocol = () => {
 };
 
 export default Protocol;
-};
-
-export default Protocol;
