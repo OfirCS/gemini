@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Mail, Loader2, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 import { services } from '../data';
 import contactVisual from '../assets/contact_visual.png';
 
@@ -75,18 +75,7 @@ const Contact = () => {
                                 </div>
                             </div>
 
-                            <div className="space-y-8">
-                                <div className="flex items-start gap-6 group">
-                                    <div className="w-10 h-10 border border-ash/20 flex items-center justify-center group-hover:bg-cream transition-colors duration-300">
-                                        <Mail className="w-4 h-4 text-stone group-hover:text-void" />
-                                    </div>
-                                    <div>
-                                        <span className="block text-xs uppercase tracking-widest text-stone mb-1">Email</span>
-                                        <span className="text-lg text-cream font-display tracking-wide">contact@emerge-security.com</span>
-                                    </div>
-                                </div>
-                                                            </div>
-                        </div>
+                                                    </div>
                     </div>
 
                     {/* Right - Form */}
