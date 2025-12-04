@@ -28,10 +28,10 @@ export default {
         midnight: '#000000',
       },
       fontFamily: {
-        // Architectural / Swiss Style
-        sans: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Manrope', 'Inter', 'sans-serif'], // Unified font family for brutalist look
-        mono: ['JetBrains Mono', 'monospace'],
+        // Clean Swiss Style
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       animation: {
         'fade-up': 'fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',

@@ -54,14 +54,6 @@ const Preloader = ({ setLoading }) => {
           >
             Emerge
           </motion.span>
-          <motion.span
-            className="text-[10px] font-sans uppercase tracking-[0.3em] text-stone"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            System Int.
-          </motion.span>
         </div>
 
         {/* Center content */}
@@ -83,33 +75,12 @@ const Preloader = ({ setLoading }) => {
               </motion.span>
             </motion.div>
           </div>
-
-          {/* Status text */}
-          <motion.p
-            className="mt-8 text-[10px] font-sans uppercase tracking-[0.4em] text-stone"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            {phase === 'complete' ? 'Access Granted' : 'Establishing Secure Connection'}
-          </motion.p>
         </div>
 
         {/* Bottom info */}
         <div className="flex justify-between items-end px-8 md:px-16 py-8">
           <motion.div
-            className="flex flex-col gap-1"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            <span className="text-[9px] font-sans uppercase tracking-[0.2em] text-stone">
-              v2.5.0
-            </span>
-          </motion.div>
-
-          <motion.div
-            className="flex items-center gap-6 w-full max-w-xs justify-end"
+            className="flex items-center gap-6 w-full max-w-xs"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}

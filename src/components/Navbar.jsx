@@ -107,10 +107,6 @@ const Navbar = ({ scrolled, isMenuOpen, toggleMenu, scrollTo }) => {
                 </motion.button>
               ))}
             </div>
-
-            <div className="py-8 text-xs font-mono text-ash uppercase tracking-widest">
-                Secure Infrastructure v2.0
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
