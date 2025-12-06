@@ -9,7 +9,7 @@ const Sectors = () => {
     return (
         <section id="sectors" className="bg-void border-t border-ash/20 py-0">
             <div className="max-w-7xl mx-auto grid lg:grid-cols-12 min-h-screen">
-                
+
                 {/* Left Column - Sticky Image Display */}
                 <div className="lg:col-span-5 relative hidden lg:block border-r border-ash/20">
                     <div className="sticky top-0 h-screen w-full overflow-hidden">
@@ -30,7 +30,7 @@ const Sectors = () => {
                                 <div className="absolute inset-0 bg-void/20 mix-blend-multiply" />
                             </motion.div>
                         </AnimatePresence>
-                        
+
                         <div className="absolute bottom-0 left-0 p-12 z-10">
                             <span className="block text-xs font-sans text-cream/60 uppercase tracking-widest mb-4">
                                 Sector Focus [0{activeSector + 1}]
@@ -58,10 +58,11 @@ const Sectors = () => {
 
                         <div className="border-t border-ash/20">
                             {sectors.map((sector, index) => (
-                                <div 
+                                <div
                                     key={index}
+                                    onClick={() => setActiveSector(index)}
                                     onMouseEnter={() => setActiveSector(index)}
-                                    className={`group py-12 border-b border-ash/20 flex flex-col gap-6 hover:bg-ash/5 transition-colors duration-300 cursor-pointer ${activeSector === index ? 'bg-ash/5' : ''}`}
+                                    className={`group py-8 md:py-12 border-b border-ash/20 flex flex-col gap-6 hover:bg-ash/5 transition-colors duration-300 cursor-pointer ${activeSector === index ? 'bg-ash/5' : ''}`}
                                 >
                                     <div className="flex items-baseline justify-between">
                                         <div className="flex items-baseline gap-4">
@@ -70,8 +71,31 @@ const Sectors = () => {
                                                 {sector.title}
                                             </h3>
                                         </div>
-                                        <ArrowRight className={`w-5 h-5 text-stone transition-transform duration-300 ${activeSector === index ? 'rotate-0 text-cream' : '-rotate-45'}`} />
+                                        <ArrowRight className={`w-5 h-5 text-stone transition-transform duration-300 ${activeSector === index ? 'rotate-90 md:rotate-0 text-cream' : '-rotate-45'}`} />
                                     </div>
+
+                                    {/* Mobile Image Accordion */}
+                                    <AnimatePresence>
+                                        {activeSector === index && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="lg:hidden overflow-hidden"
+                                            >
+                                                <div className="h-48 w-full relative mb-6 rounded-lg overflow-hidden">
+                                                    <img
+                                                        src={sector.image}
+                                                        alt={sector.title}
+                                                        className="w-full h-full object-cover grayscale contrast-125 brightness-75"
+                                                    />
+                                                    <div className="absolute inset-0 bg-void/20 mix-blend-multiply" />
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
                                     <p className="text-stone/80 text-sm font-medium leading-relaxed max-w-md pl-8">
                                         {sector.desc}
                                     </p>

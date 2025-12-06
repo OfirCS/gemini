@@ -8,7 +8,7 @@ const ServiceItem = ({ service, index }) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="group relative p-8 md:p-10 border-b border-r border-ash/20 hover:bg-cream transition-colors duration-300 flex flex-col justify-between min-h-[300px] cursor-pointer"
+      className="group relative p-8 md:p-10 border-b border-r border-ash/20 hover:bg-cream transition-colors duration-300 flex flex-col justify-between min-h-[220px] md:min-h-[300px] cursor-pointer"
     >
       <div className="flex justify-between items-start w-full">
         <span className="text-xs text-stone group-hover:text-void transition-colors duration-300">
@@ -22,7 +22,7 @@ const ServiceItem = ({ service, index }) => {
           {service.title}
         </h3>
         <p className="text-stone group-hover:text-void/70 text-sm font-medium leading-relaxed transition-colors duration-300 max-w-[90%]">
-            {service.description}
+          {service.description}
         </p>
       </div>
     </motion.div>

@@ -24,7 +24,7 @@ const Hero = ({ scrollTo }) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <h1 className="font-display text-5xl md:text-9xl lg:text-[10rem] font-bold leading-[0.9] md:leading-[0.85] tracking-tighter text-cream -ml-1">
+                        <h1 className="font-display text-4xl md:text-9xl lg:text-[10rem] font-bold leading-[0.9] md:leading-[0.85] tracking-tighter text-cream -ml-1">
                             YOUR SAFETY
                             <br />
                             <span className="text-stone">OUR MISSION</span>
@@ -55,7 +55,7 @@ const Hero = ({ scrollTo }) => {
                     </div>
 
                     {/* Image/Visual Placeholder - Monochrome */}
-                    <div className="h-[40vh] lg:h-1/2 relative overflow-hidden border-t border-ash/20 group rounded-3xl m-4 md:m-8">
+                    <div className="h-[40vh] lg:h-1/2 relative overflow-hidden border-t border-ash/20 group rounded-2xl md:rounded-3xl m-4 md:m-8">
                         <motion.img
                             style={{ y }}
                             src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"

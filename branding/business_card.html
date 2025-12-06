@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Card Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .card {
+            width: 3.5in;
+            height: 2in;
+            /* Scale up for viewing */
+            transform: scale(1.5);
+            transform-origin: top left;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200 p-20 flex flex-col gap-20 items-start">
+
+    <!-- Front Side -->
+    <div>
+        <h2 class="text-gray-500 mb-4 uppercase tracking-widest text-sm">Front Side (Matte Black)</h2>
+        <div class="card bg-black flex flex-col items-center justify-center relative overflow-hidden shadow-2xl">
+            <!-- Subtle texture/gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-800/20 to-transparent"></div>
+
+            <div class="flex items-center gap-3 z-10">
+                <img src="symbol_black.png" class="h-12 w-auto invert brightness-0">
+                <span class="font-display font-bold tracking-[0.2em] text-2xl uppercase text-white">
+                    Emerge
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Side -->
+    <div>
+        <h2 class="text-gray-500 mb-4 uppercase tracking-widest text-sm">Back Side (White or Minimal)</h2>
+        <div class="card bg-white flex flex-col justify-between p-8 shadow-2xl relative">
+
+            <!-- Top Right Logo Small -->
+            <div class="absolute top-6 right-6 opacity-20">
+                <img src="symbol_black.png" class="h-8 w-auto">
+            </div>
+
+            <div class="mt-2">
+                <h3 class="font-display text-xl font-bold uppercase text-black tracking-wide">Ofir Sela</h3>
+                <p class="font-sans text-xs text-gray-500 uppercase tracking-widest mt-1">Director of Operations</p>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <div class="flex items-center gap-3">
+                    <div class="w-1 h-1 bg-black rounded-full"></div>
+                    <p class="font-sans text-xs font-medium text-gray-800">+1 (647) 555-0123</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-1 h-1 bg-black rounded-full"></div>
+                    <p class="font-sans text-xs font-medium text-gray-800">contact@emerge.security</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-1 h-1 bg-black rounded-full"></div>
+                    <p class="font-sans text-xs font-medium text-gray-800">www.emerge.security</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
