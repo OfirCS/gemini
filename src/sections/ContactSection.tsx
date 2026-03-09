@@ -15,9 +15,6 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Replace with your Web3Forms access key from https://web3forms.com
-const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE';
-
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -58,24 +55,20 @@ export default function ContactSection() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
-    formData.append('access_key', WEB3FORMS_KEY);
-    formData.append('subject', 'New Lead - Emerge Security Website');
-    formData.append('from_name', 'Emerge Security Website');
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/', {
         method: 'POST',
-        body: formData,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
       });
 
-      const data = await res.json();
-
-      if (data.success) {
+      if (res.ok) {
         setStatus('success');
         form.reset();
       } else {
         setStatus('error');
-        setErrorMsg(data.message || 'Something went wrong. Please try again.');
+        setErrorMsg('Something went wrong. Please try again.');
       }
     } catch {
       setStatus('error');
@@ -170,9 +163,9 @@ export default function ContactSection() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Hidden fields for Web3Forms */}
-                <input type="hidden" name="botcheck" value="" />
+              <form onSubmit={handleSubmit} name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" className="space-y-6">
+                <input type="hidden" name="form-name" value="contact" />
+                <p className="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
