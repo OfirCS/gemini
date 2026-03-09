@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emerge Security — Facebook Ad Content</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white: #ffffff;
+  --black: #141414;
+  --gray: #6b6b6b;
+  --gray-light: #e0e0e0;
+  --gray-bg: rgba(247, 247, 247, 0.5);
+  --green: rgb(34, 197, 94);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: Inter, -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Page Layout ── */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+}
+
+/* ── Header ── */
+.page-header {
+  margin-bottom: 80px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.header-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.65px;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.1s;
+}
+
+.page-title {
+  font-family: Inter, sans-serif;
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.0;
+  color: var(--black);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.2s;
+}
+
+.page-title span {
+  color: var(--gray);
+  font-weight: 800;
+}
+
+.page-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray);
+  margin-top: 20px;
+  max-width: 480px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.35s;
+}
+
+/* ── Ad Cards Grid ── */
+.ads-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--gray-light);
+  border: 1px solid var(--gray-light);
+}
+
+/* ── Individual Ad Card ── */
+.ad-card {
+  background: var(--white);
+  padding: 48px;
+  position: relative;
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ad-card:nth-child(1) { animation-delay: 0.2s; }
+.ad-card:nth-child(2) { animation-delay: 0.3s; }
+.ad-card:nth-child(3) { animation-delay: 0.4s; }
+.ad-card:nth-child(4) { animation-delay: 0.5s; }
+.ad-card:nth-child(5) { animation-delay: 0.6s; }
+.ad-card:nth-child(6) { animation-delay: 0.7s; }
+
+/* Card top: number + category */
+.ad-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.ad-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray);
+  letter-spacing: 0.5px;
+}
+
+.ad-category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1.65px;
+  color: var(--gray);
+  text-transform: uppercase;
+  text-align: right;
+}
+
+/* Headline */
+.ad-headline {
+  font-family: Inter, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+
+/* Primary Text (the main ad copy) */
+.ad-primary {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--gray);
+  line-height: 1.65;
+  margin-bottom: 32px;
+  max-width: 400px;
+}
+
+/* Features / Tags */
+.ad-features {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ad-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gray);
+  border: 1px solid var(--gray-light);
+  padding: 6px 12px;
+}
+
+/* CTA line */
+.ad-cta {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ad-cta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.65px;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.ad-cta-arrow {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+/* Divider variant — for dark cards */
+.ad-card.dark {
+  background: var(--black);
+}
+
+.ad-card.dark .ad-number,
+.ad-card.dark .ad-category {
+  color: rgba(255,255,255,0.4);
+}
+
+.ad-card.dark .ad-headline {
+  color: #ffffff;
+}
+
+.ad-card.dark .ad-primary {
+  color: rgba(255,255,255,0.55);
+}
+
+.ad-card.dark .ad-tag {
+  color: rgba(255,255,255,0.5);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.ad-card.dark .ad-cta-label {
+  color: #ffffff;
+}
+
+.ad-card.dark .ad-cta-arrow {
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── Bottom Summary ── */
+.summary-bar {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--gray-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards 1s;
+}
+
+.summary-left {
+  max-width: 400px;
+}
+
+.summary-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1.65px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+.summary-text {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.summary-stats {
+  display: flex;
+  gap: 48px;
+}
+
+.stat {
+  text-align: right;
+}
+
+.stat-value {
+  font-family: Inter, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--black);
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .page { padding: 48px 24px 80px; }
+  .ads-grid { grid-template-columns: 1fr; }
+  .ad-card { padding: 32px; min-height: auto; }
+  .ad-headline { font-size: 26px; }
+  .summary-bar { flex-direction: column; gap: 32px; }
+  .summary-stats { gap: 32px; }
+  .stat { text-align: left; }
+}
+
+/* ── Copy button ── */
+.copy-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: 1px solid var(--gray-light);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding: 5px 10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.2s;
+}
+
+.ad-card:hover .copy-btn { opacity: 1; }
+.copy-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+.ad-card.dark .copy-btn { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.4); }
+.ad-card.dark .copy-btn:hover { background: #fff; color: var(--black); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="page-header">
+    <div class="header-label">Facebook Ad Campaigns · Emerge Security</div>
+    <h1 class="page-title">AD <span>CONTENT</span></h1>
+    <p class="page-subtitle">Six campaign-ready ad variations. Same voice, same authority. Ready for Facebook Ads Manager.</p>
+  </header>
+
+  <div class="ads-grid">
+
+    <!-- 01 — Brand Awareness -->
+    <div class="ad-card">
+      <button class="copy-btn" onclick="copyAd(this)">Copy</button>
+      <div class="ad-meta">
+        <span class="ad-number">01</span>
+        <span class="ad-category">Brand Awareness</span>
+      </div>
+      <h2 class="ad-headline">EX-MILITARY.<br>LICENSED.<br>ALWAYS ON.</h2>
+      <p class="ad-primary">Founded by former military operators with over a decade of tactical field experience. We provide private investigation and security services to corporations, high-net-worth individuals, and families across Toronto and the GTA. Licensed under Ontario's PSISA. Confidential consultations available 24/7.</p>
+      <div class="ad-features">
+        <span class="ad-tag">Ex-Military Team</span>
+        <span class="ad-tag">Licensed & Insured</span>
+        <span class="ad-tag">24/7 Operations</span>
+        <span class="ad-tag">100% Confidential</span>
+      </div>
+      <div class="ad-cta">
+        <span class="ad-cta-label">Learn More</span>
+        <span class="ad-cta-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- 02 — Executive Protection -->
+    <div class="ad-card dark">
+      <button class="copy-btn" onclick="copyAd(this)">Copy</button>
+      <div class="ad-meta">
+        <span class="ad-number">02</span>
+        <span class="ad-category">Executive Protection</span>
+      </div>
+      <h2 class="ad-headline">YOUR SAFETY IS NOT NEGOTIABLE.</h2>
+      <p class="ad-primary">Close protection by former military operators. Secure transport, advance route planning, residential security, and 24/7 detail coverage for executives and high-net-worth individuals across Toronto and the GTA. Plain-clothes details. Unmarked coordination. Never obvious.</p>
+      <div class="ad-features">
+        <span class="ad-tag">Close Protection</span>
+        <span class="ad-tag">Secure Transport</span>
+        <span class="ad-tag">Route Analysis</span>
+        <span class="ad-tag">24/7 Coverage</span>
+      </div>
+      <div class="ad-cta">
+        <span class="ad-cta-label">Request Consultation</span>
+        <span class="ad-cta-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- 03 — Corporate Investigation -->
+    <div class="ad-card">
+      <button class="copy-btn" onclick="copyAd(this)">Copy</button>
+      <div class="ad-meta">
+        <span class="ad-number">03</span>
+        <span class="ad-category">Corporate Investigation</span>
+      </div>
+      <h2 class="ad-headline">PROTECT YOUR BUSINESS.</h2>
+      <p class="ad-primary">Employee theft, fraud, workplace misconduct, and fraudulent WSIB claims cost Ontario businesses millions every year. Our licensed investigators deliver court-admissible evidence with the discretion your organization demands. Every situation is different. Tell us yours.</p>
+      <div class="ad-features">
+        <span class="ad-tag">Employee Theft</span>
+        <span class="ad-tag">Fraud Detection</span>
+        <span class="ad-tag">WSIB Claims</span>
+        <span class="ad-tag">Misconduct</span>
+      </div>
+      <div class="ad-cta">
+        <span class="ad-cta-label">Free Consultation</span>
+        <span class="ad-cta-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- 04 — Surveillance -->
+    <div class="ad-card dark">
+      <button class="copy-btn" onclick="copyAd(this)">Copy</button>
+      <div class="ad-meta">
+        <span class="ad-number">04</span>
+        <span class="ad-category">Surveillance Services</span>
+      </div>
+      <h2 class="ad-headline">EVIDENCE THAT STANDS UP.</h2>
+      <p class="ad-primary">Covert and overt surveillance for corporate, legal, and personal matters. Court-admissible documentation using HD video, GPS tracking, and night vision equipment. Led by ex-military professionals with real field experience across Toronto and the GTA.</p>
+      <div class="ad-features">
+        <span class="ad-tag">Court-Admissible</span>
+        <span class="ad-tag">HD Video</span>
+        <span class="ad-tag">GPS Tracking</span>
+        <span class="ad-tag">Night Vision</span>
+      </div>
+      <div class="ad-cta">
+        <span class="ad-cta-label">Learn More</span>
+        <span class="ad-cta-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- 05 — Personal & Family -->
+    <div class="ad-card">
+      <button class="copy-btn" onclick="copyAd(this)">Copy</button>
+      <div class="ad-meta">
+        <span class="ad-number">05</span>
+        <span class="ad-category">Personal & Family</span>
+      </div>
+      <h2 class="ad-headline">WHEN YOU NEED THE TRUTH.</h2>
+      <p class="ad-primary">Discreet, compassionate investigation for the moments that matter most. Infidelity, custody disputes, missing persons, and stalking response — handled with the confidentiality and professionalism you deserve. All inquiries are strictly confidential.</p>
+      <div class="ad-features">
+        <span class="ad-tag">Infidelity</span>
+        <span class="ad-tag">Custody</span>
+        <span class="ad-tag">Missing Persons</span>
+        <span class="ad-tag">Stalking Response</span>
+      </div>
+      <div class="ad-cta">
+        <span class="ad-cta-label">Contact Us</span>
+        <span class="ad-cta-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- 06 — TSCM -->
+    <div class="ad-card dark">
+      <button class="copy-btn" onclick="copyAd(this)">Copy</button>
+      <div class="ad-meta">
+        <span class="ad-number">06</span>
+        <span class="ad-category">TSCM & Counter-Surveillance</span>
+      </div>
+      <h2 class="ad-headline">ARE YOU BEING WATCHED?</h2>
+      <p class="ad-primary">Hidden cameras, audio bugs, and GPS trackers are smaller than ever. Our TSCM team uses spectrum analysis, thermal imaging, and RF detection to sweep your home, office, or vehicle. If something's there, we find it.</p>
+      <div class="ad-features">
+        <span class="ad-tag">Hidden Cameras</span>
+        <span class="ad-tag">Audio Bugs</span>
+        <span class="ad-tag">GPS Trackers</span>
+        <span class="ad-tag">RF Detection</span>
+      </div>
+      <div class="ad-cta">
+        <span class="ad-cta-label">Get a Quote</span>
+        <span class="ad-cta-arrow">→</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Summary -->
+  <div class="summary-bar">
+    <div class="summary-left">
+      <div class="summary-label">Notes</div>
+      <p class="summary-text">All copy written to match Emerge Security's brand voice. Direct, authoritative, zero fluff. Ready to pair with black & white photography or clean typographic creatives.</p>
+    </div>
+    <div class="summary-stats">
+      <div class="stat">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Campaigns</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">Operations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">GTA</div>
+        <div class="stat-label">Coverage</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function copyAd(btn) {
+  const card = btn.closest('.ad-card');
+  const category = card.querySelector('.ad-category').textContent;
+  const headline = card.querySelector('.ad-headline').textContent.replace(/\n/g, ' ');
+  const primary = card.querySelector('.ad-primary').textContent;
+  const tags = [...card.querySelectorAll('.ad-tag')].map(t => t.textContent).join(' · ');
+  const cta = card.querySelector('.ad-cta-label').textContent;
+
+  const text = `[${category}]\n\nHeadline: ${headline}\n\nPrimary Text:\n${primary}\n\nTags: ${tags}\n\nCTA: ${cta}`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied';
+    setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+  });
+}
+</script>
+
+</body>
+</html>

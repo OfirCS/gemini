@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, ArrowDownRight } from 'lucide-react';
+import { ArrowDownRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 

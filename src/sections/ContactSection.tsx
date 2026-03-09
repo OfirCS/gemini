@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, Phone, Clock, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, Clock, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,10 +15,14 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Replace with your Web3Forms access key from https://web3forms.com
+const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE';
+
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -47,9 +51,36 @@ export default function ContactSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus('sending');
+    setErrorMsg('');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append('access_key', WEB3FORMS_KEY);
+    formData.append('subject', 'New Lead - Emerge Security Website');
+    formData.append('from_name', 'Emerge Security Website');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+        setErrorMsg(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setStatus('error');
+      setErrorMsg('Network error. Please try again or email us directly.');
+    }
   };
 
   return (
@@ -79,9 +110,9 @@ export default function ContactSection() {
                 <Mail size={16} className="text-primary" />
                 <span className="font-mono-label">EMAIL</span>
               </div>
-              <p className="text-foreground font-medium">
+              <a href="mailto:contact@emergegta.com" className="text-foreground font-medium hover:opacity-70 transition-opacity">
                 contact@emergegta.com
-              </p>
+              </a>
             </div>
 
             <div>
@@ -89,7 +120,9 @@ export default function ContactSection() {
                 <Phone size={16} className="text-primary" />
                 <span className="font-mono-label">PHONE</span>
               </div>
-              <p className="text-foreground font-medium">+1 (416) 555-0147</p>
+              <a href="tel:+14165550147" className="text-foreground font-medium hover:opacity-70 transition-opacity">
+                +1 (416) 555-0147
+              </a>
             </div>
 
             <div>
@@ -112,15 +145,14 @@ export default function ContactSection() {
 
             <div className="pt-4 border-t border-border">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                All inquiries are handled with strict confidentiality. We are
-                fully licensed and insured.
+                All inquiries are handled with strict confidentiality.
               </p>
             </div>
           </div>
 
           {/* Right - Form */}
           <div>
-            {submitted ? (
+            {status === 'success' ? (
               <div className="bg-card border border-border p-12 text-center">
                 <div className="w-14 h-14 border border-border flex items-center justify-center mx-auto mb-6">
                   <CheckCircle size={24} className="text-primary" />
@@ -130,15 +162,25 @@ export default function ContactSection() {
                   Our operations team will evaluate your requirements and
                   contact you shortly.
                 </p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="mt-6 text-sm text-muted-foreground hover:text-foreground transition-colors underline"
+                >
+                  Send another request
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Hidden fields for Web3Forms */}
+                <input type="hidden" name="botcheck" value="" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="font-mono-label text-foreground mb-2 block">
                       FULL NAME
                     </label>
                     <Input
+                      name="name"
                       placeholder="Your name"
                       className="bg-transparent border-border rounded-none h-12 text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-1 focus-visible:ring-primary"
                       required
@@ -149,6 +191,7 @@ export default function ContactSection() {
                       EMAIL ADDRESS
                     </label>
                     <Input
+                      name="email"
                       type="email"
                       placeholder="your@email.com"
                       className="bg-transparent border-border rounded-none h-12 text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-1 focus-visible:ring-primary"
@@ -162,6 +205,7 @@ export default function ContactSection() {
                     ORGANIZATION (OPTIONAL)
                   </label>
                   <Input
+                    name="organization"
                     placeholder="Company or entity"
                     className="bg-transparent border-border rounded-none h-12 text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-1 focus-visible:ring-primary"
                   />
@@ -171,39 +215,27 @@ export default function ContactSection() {
                   <label className="font-mono-label text-foreground mb-2 block">
                     SERVICE INTEREST
                   </label>
-                  <Select>
+                  <Select name="service">
                     <SelectTrigger className="bg-transparent border-border rounded-none h-12 text-foreground focus:ring-1 focus:ring-primary">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
                     <SelectContent className="rounded-none border-border">
-                      <SelectItem
-                        value="surveillance"
-                        className="rounded-none focus:bg-accent focus:text-background"
-                      >
+                      <SelectItem value="surveillance" className="rounded-none focus:bg-accent focus:text-background">
                         Surveillance & Intelligence
                       </SelectItem>
-                      <SelectItem
-                        value="threat"
-                        className="rounded-none focus:bg-accent focus:text-background"
-                      >
+                      <SelectItem value="threat" className="rounded-none focus:bg-accent focus:text-background">
                         Threat Assessment
                       </SelectItem>
-                      <SelectItem
-                        value="protection"
-                        className="rounded-none focus:bg-accent focus:text-background"
-                      >
+                      <SelectItem value="protection" className="rounded-none focus:bg-accent focus:text-background">
                         Executive Protection
                       </SelectItem>
-                      <SelectItem
-                        value="patrols"
-                        className="rounded-none focus:bg-accent focus:text-background"
-                      >
-                        Strategic Patrols
+                      <SelectItem value="escort" className="rounded-none focus:bg-accent focus:text-background">
+                        Business Escort
                       </SelectItem>
-                      <SelectItem
-                        value="other"
-                        className="rounded-none focus:bg-accent focus:text-background"
-                      >
+                      <SelectItem value="investigation" className="rounded-none focus:bg-accent focus:text-background">
+                        Investigation Services
+                      </SelectItem>
+                      <SelectItem value="other" className="rounded-none focus:bg-accent focus:text-background">
                         Other
                       </SelectItem>
                     </SelectContent>
@@ -215,18 +247,36 @@ export default function ContactSection() {
                     PROJECT DETAILS
                   </label>
                   <Textarea
+                    name="message"
                     placeholder="Describe your security requirements..."
                     className="bg-transparent border-border rounded-none min-h-[160px] text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-1 focus-visible:ring-primary resize-none p-4"
                     required
                   />
                 </div>
 
+                {status === 'error' && (
+                  <div className="flex items-center gap-3 text-red-600 text-sm border border-red-200 bg-red-50 p-4">
+                    <AlertCircle size={16} className="shrink-0" />
+                    {errorMsg}
+                  </div>
+                )}
+
                 <Button
                   type="submit"
+                  disabled={status === 'sending'}
                   className="w-full cta-button justify-center mt-8"
                 >
-                  SUBMIT REQUEST
-                  <Send size={14} className="ml-2" />
+                  {status === 'sending' ? (
+                    <>
+                      SENDING...
+                      <Loader2 size={14} className="ml-2 animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      SUBMIT REQUEST
+                      <Send size={14} className="ml-2" />
+                    </>
+                  )}
                 </Button>
               </form>
             )}

@@ -21,15 +21,21 @@ export function EmergeLogo({
         xmlns="http://www.w3.org/2000/svg"
         className="text-foreground shrink-0"
       >
+        {/* Shield outline */}
         <path
-          d="M20 4L35 11V24C35 32 28.5 36.5 20 37C11.5 36.5 5 32 5 24V11L20 4Z"
+          d="M20 3L35 10.5V23C35 31 28.5 36 20 37.5C11.5 36 5 31 5 23V10.5L20 3Z"
           stroke="currentColor"
-          strokeWidth="1.25"
+          strokeWidth="1.5"
           strokeLinejoin="round"
         />
-        <path d="M14 14H24" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
-        <path d="M14 20H22" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
-        <path d="M14 26H24" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
+        {/* Upward chevron — "emerge" */}
+        <path
+          d="M13 24L20 15L27 24"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
       {showText && (
         <span

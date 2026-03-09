@@ -53,9 +53,9 @@ export default function HeroSection() {
               className="text-[clamp(40px,5.5vw,80px)] font-extrabold leading-[0.95] tracking-tight text-foreground mb-8"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              SECURITY
+              SECURITY &amp;
               <br />
-              &amp; INVESTIGATION
+              INVESTIGATION
               <br />
               <span className="text-muted-foreground">SERVICES</span>
             </h1>
