@@ -116,7 +116,7 @@ export default function PrinciplesSection() {
               <div className="absolute inset-0 z-0 pointer-events-none">
                 <img
                   src={p.image}
-                  alt=""
+                  alt={`${p.title} — ${p.tag} — Emerge Security approach`}
                   className="w-full h-full object-cover opacity-0 group-hover:opacity-[0.12] transition-opacity duration-700 grayscale"
                   loading="lazy"
                 />

@@ -60,7 +60,7 @@ export default function SeeFirstSection() {
       >
         <img 
           src="/city_night_04.jpg" 
-          alt="Night city"
+          alt="Intelligence-led protection — threat assessment and route analysis in Toronto"
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0D] via-[#0B0B0D]/80 to-transparent" />

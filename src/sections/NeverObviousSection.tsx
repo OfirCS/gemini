@@ -60,7 +60,7 @@ export default function NeverObviousSection() {
       >
         <img 
           src="/city_night_03.jpg" 
-          alt="Night city"
+          alt="Discretion-first security protocols — covert operations in Toronto at night"
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0D] via-[#0B0B0D]/80 to-transparent" />

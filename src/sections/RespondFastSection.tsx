@@ -60,7 +60,7 @@ export default function RespondFastSection() {
       >
         <img 
           src="/city_night_05.jpg" 
-          alt="Night city"
+          alt="Rapid response security team — 24/7 emergency operations in the GTA"
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0D] via-[#0B0B0D]/80 to-transparent" />
